@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+from logging import root
 
 import os
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'pywebtv.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['common/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

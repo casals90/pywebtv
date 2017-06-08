@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>PyTv</title>
+        {% block css %}
+{#            <link href="{% static '/static/css/libs/cookieconsent.min.css'%}" rel="stylesheet">#}
+        {% endblock %}
+        {% block js %}
+            <script>
+              var language = "{{ LANGUAGE_CODE }}";
+            </script>
+{#            <script src="{% static 'js/libs/jquery.min.js' %}"></script>#}
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block contentFooter %}{% endblock %}
+    </body>
+</html>
