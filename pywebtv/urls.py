@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 """pywebtv URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,8 +17,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import common.views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    url(r'^$', common.views.index, name='home'),
+    url(r'^accounts/login/$', auth_views.LoginView.as_view(template_name='common/registration/login.html')),
+    # url(r'^login/$', auth_views.login, name='login'),
+    # url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),
+    url(r'^common/', include('common.urls'), name='common'),
     url(r'^tv/', include('tv.urls'), name='tv'),
 ]
