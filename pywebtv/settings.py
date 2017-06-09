@@ -125,6 +125,6 @@ STATIC_URL = '/static/'
 
 # Login urls
 
-LOGIN_URL = 'login'
+LOGIN_URL = ''
 LOGIN_REDIRECT_URL = 'channels'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = '/'

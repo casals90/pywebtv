@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
-
 from django.conf.urls import url
-
-from . import views
+from tv.views import crud
 
 urlpatterns = [
-    # url(r'^$', views.index, name='index'),
+    url(r'^channels$', crud.list, name='channels'),
 ]

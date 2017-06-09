@@ -11,5 +11,7 @@
 {% endblock css %}
 
 {% block content %}
-  <h2> Username:</h2>
+  <h2> Username: {{ request.user }}</h2>
+
+  <a href="{% url 'logout' %}">Logout</a>
 {% endblock %}
