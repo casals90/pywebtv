@@ -7,7 +7,6 @@ from django.views.generic import DetailView
 
 
 def index(request):
-    print('Entra'*25)
     return HttpResponse("Hello, world. You're at the web TV index.")
 
 
