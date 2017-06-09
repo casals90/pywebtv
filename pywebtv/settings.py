@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Own apps
+    'common.apps.CommonConfig',
     'tv.apps.TvConfig'
 ]
 
@@ -121,6 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+MEDIA_ROOT = '/media'
+
+# User model
+
+AUTH_USER_MODEL = 'common.User'
 
 
 # Login urls

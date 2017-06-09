@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 
 @login_required(login_url='login')
-def list(request):
+def list_channels(request):
     return render(request, 'channels.html')
