@@ -3,4 +3,6 @@ from django.contrib import admin
 from common.models import user_model
 
 
-admin.site.register(user_model.User)
+@admin.register(user_model.User)
+class UserAdmin(admin.ModelAdmin):
+    model = user_model.User
