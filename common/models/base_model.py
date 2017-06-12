@@ -1,17 +1,11 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext as _
-from common.models import user_model
 
 
 class BaseModel(models.Model):
     class Meta:
         abstract = True
-
-    # creator_by modify_by -> User
-    # creator_by = models.ForeignKey(
-    #     user_model.User,
-    # )
 
     creation_date = models.DateTimeField(
         blank=False,
