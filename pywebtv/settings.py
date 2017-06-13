@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     # Own apps
     'common.apps.CommonConfig',
     'tv.apps.TvConfig'
@@ -84,6 +85,14 @@ DATABASES = {
     }
 }
 
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -138,5 +147,5 @@ AUTH_USER_MODEL = 'common.User'
 # Login urls
 
 LOGIN_URL = ''
-LOGIN_REDIRECT_URL = 'channels'
+LOGIN_REDIRECT_URL = 'tv/new_channel'
 LOGOUT_REDIRECT_URL = '/'

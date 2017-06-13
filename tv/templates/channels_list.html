@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock js %}
+
+{% block css %}
+    {{ block.super }}
+{% endblock css %}
+
+{% block content %}
+  <h2> Username: {{ request.user }}</h2>
+
+  <h2> List</h2>
+  {{ objects }}
+
+  <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}

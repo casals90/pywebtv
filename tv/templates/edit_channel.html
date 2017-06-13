@@ -13,5 +13,12 @@
 {% block content %}
   <h2> Username: {{ request.user }}</h2>
 
+  <h2> New Channel</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save" />
+    </form>
+
   <a href="{% url 'logout' %}">Logout</a>
 {% endblock %}

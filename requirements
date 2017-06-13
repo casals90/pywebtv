@@ -1,4 +1,11 @@
+construct==2.5.3
 Django==1.11
+django-haystack==2.6.1
+enum34==1.1.6
+future==0.16.0
 olefile==0.44
+pefile==2016.3.28
 Pillow==4.1.1
+python-ptrace==0.9.2
 pytz==2017.2
+six==1.10.0
