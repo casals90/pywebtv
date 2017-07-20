@@ -12,6 +12,13 @@ class StreamingChannel(BaseModel):
         permissions = (
         )
 
+    name = CharField(
+        null=False,
+        blank=False,
+        max_length=25,
+        verbose_name=_('Name')
+    )
+
     description = CharField(
         null=True,
         blank=True,
@@ -38,3 +45,6 @@ class StreamingChannel(BaseModel):
         related_name='channels',
         verbose_name=_('Owner streaming channels'),
     )
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.url)

@@ -4,8 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-from haystack.query import SearchQuerySet
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
 from common.models.user_model import User
 from tv.forms.streaming_channel_form import StreamingChannelForm
@@ -17,16 +16,15 @@ def list_channels(request):
     return render(request, 'channels_list.html', context={'form': form})
 
 
-class StreamingChannelSearch(LoginRequiredMixin, ListView):
-    object = None
+class StreamingChannelListView(LoginRequiredMixin, ListView):
     model = StreamingChannel
     template_name = 'channels_list.html'
 
     def get_queryset(self):
-        return SearchQuerySet.models(self.model).filter()
+        return self.model.objects.filter(owner_user=self.request.user)
 
 
-class StreamingChannelCreate(LoginRequiredMixin, CreateView):
+class StreamingChannelCreateView(LoginRequiredMixin, CreateView):
     object = None
     model = StreamingChannel
     form_class = StreamingChannelForm
@@ -45,3 +43,18 @@ class StreamingChannelCreate(LoginRequiredMixin, CreateView):
         self.object.save()
 
         return HttpResponseRedirect(self.success_url)
+
+
+class StreamingChannelUpdateView(LoginRequiredMixin, UpdateView):
+    model = StreamingChannel
+    form_class = StreamingChannelForm
+    success_url = reverse_lazy('tv:channels')
+    template_name = 'edit_channel.html'
+    login_url = reverse_lazy('login')
+
+
+class StreamingChannelDeleteView(LoginRequiredMixin, DeleteView):
+    model = StreamingChannel
+    success_url = reverse_lazy('tv:channels')
+    login_url = reverse_lazy('login')
+    template_name = 'confirm_delete_channel.html'
