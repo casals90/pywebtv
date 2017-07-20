@@ -14,7 +14,7 @@
 {% block content %}
     <h3> Username: {{ request.user }}</h3>
 
-    <h2>Channels</h2> <p><a href="{% url 'tv:new_channel' %}">{% trans "Adding new channel" %}</a></p>
+    <h2>Channels:</h2> <p><a href="{% url 'tv:new_channel' %}">{% trans "Adding new channel" %}</a></p>
 
     <ul>
         {% for channel in object_list %}
