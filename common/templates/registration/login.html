@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_login.html' %}
 
 {% block title %}Login{% endblock %}
 
@@ -11,10 +11,40 @@
 {% endblock css %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+
+    <div class="row vertical-offset-100">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Please sign in</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                                <input type="text" class="form-control" name="{{form.username.html_name}}" id="id_{{form.username.html_name}}" placeholder="Username">
+                                {% if form.username.errors %}
+                                    <label class="control-label">{{ form.username.errors }}</label>
+                                {% endif %}
+                            </div>
+                            <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                                <input type="password" class="form-control" name="{{form.password.html_name}}" id="id_{{form.password.html_name}}" placeholder="Password">
+                                {% if form.password.errors %}
+                                    <label class="control-label">{{ form.password.errors }}</label>
+                                {% endif %}
+                            </div>
+                            <!--<div class="checkbox">-->
+                                <!--<label>-->
+                                    <!--<input name="remember" type="checkbox" value="Remember Me"> Remember Me-->
+                                <!--</label>-->
+                            <!--</div>-->
+                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Log in"/>
+                        </fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}
