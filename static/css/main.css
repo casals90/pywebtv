@@ -1,4 +1,12 @@
 
-.vertical-offset-100{
+.vertical-offset-100 {
     padding-top:100px;
+}
+
+.no-margin {
+    margin:0px;
+}
+
+.line-height-34 {
+    line-height:34px;
 }

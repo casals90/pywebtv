@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <title>PyTv</title>
         {% block css %}
-            <link href="{% static 'css/libs/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+            <link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
             <link href="{% static 'css/main.css' %}" rel="stylesheet">
         {% endblock %}
         {% block js %}
@@ -17,7 +17,7 @@
               var language = "{{ LANGUAGE_CODE }}";
             </script>
             <script src="{% static 'js/libs/jquery/jquery-3.2.1.min.js' %}"></script>
-            <script src="{% static 'js/libs/bootstrap/bootstrap.min.js' %}"></script>
+            <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
         {% endblock %}
     </head>
     <body background="{% static 'img/login/background_login.jpg' %}">
