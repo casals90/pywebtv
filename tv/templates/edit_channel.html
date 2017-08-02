@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Login{% endblock %}
 
@@ -11,14 +12,73 @@
 {% endblock css %}
 
 {% block content %}
-  <h2> Username: {{ request.user }}</h2>
 
-  <h2> New Channel</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save" />
-    </form>
-
-  <a href="{% url 'tv:channels' %}">Cancel</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">{% if edit == True %} {% trans 'Edit channel' %} {% else %} {% trans 'New channel' %} {% endif %}</h2>
+        </div>
+        <div class="panel-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="{{form.name.id_for_label}}"> {{ form.name.label_tag }} </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" id="{{form.name.id_for_label}}" type="text" value="{{form.name.value}}">
+                            {% if form.name.errors %}
+                                <label class="control-label">{{ form.name.errors }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="{{form.description.id_for_label}}"> {{ form.description.label_tag }} </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" id="{{form.description.id_for_label}}" type="text" value="{{form.description.value|default:''}}">
+                            {% if form.name.errors %}
+                                <label class="control-label">{{ form.name.errors }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="{{form.icon.id_for_label}}"> {{ form.icon.label_tag }} </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="file" class="form-control" id="{{form.icon.id_for_label}}">
+                            {% if form.icon.errors %}
+                                <label class="control-label">{{ form.icon.errors }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="{{form.url.id_for_label}}"> {{ form.url.label_tag }} </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" id="{{form.url.id_for_label}}" type="text" value="{{form.url.value|default:''}}">
+                            {% if form.url.errors %}
+                                <label class="control-label">{{ form.url.errors }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" value="Save" class="btn btn-primary" data-toggle="tooltip" role="button"/>
+                        <a href="{% url 'tv:channels' %}" class="btn btn-default" data-toggle="tooltip" type="submit" role="button">{% trans 'Cancel' %}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -32,6 +32,12 @@ class StreamingChannelCreateView(LoginRequiredMixin, CreateView):
     template_name = 'edit_channel.html'
     login_url = reverse_lazy('login')
 
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['edit'] = False
+        context['form'] = StreamingChannelForm()
+        return context
+
     def form_valid(self, form):
         try:
             user = User.objects.get(username=self.request.user)
@@ -51,6 +57,12 @@ class StreamingChannelUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('tv:channels')
     template_name = 'edit_channel.html'
     login_url = reverse_lazy('login')
+
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['edit'] = True
+        context['form'] = StreamingChannelForm(instance=self.get_object())
+        return context
 
 
 class StreamingChannelDeleteView(LoginRequiredMixin, DeleteView):

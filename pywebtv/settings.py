@@ -145,6 +145,6 @@ AUTH_USER_MODEL = 'common.User'
 
 # Login urls
 
-LOGIN_URL = ''
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'tv/channels'
 LOGOUT_REDIRECT_URL = '/'
